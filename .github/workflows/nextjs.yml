@@ -19,7 +19,7 @@ jobs:
       - name: entrar no codigo fonte...
         run: cd project/app
       - name: instalar pacotes
-        run: npm i
+        run: cd project/app && npm i 
       - name: fazer build
         run: npm run export
       - name: onde estou?
