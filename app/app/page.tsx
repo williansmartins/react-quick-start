@@ -1,3 +1,5 @@
+import './globals.css'; // Importe o arquivo globals.css
+
 function Profile() {
   return (
     <img
