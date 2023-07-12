@@ -18,29 +18,29 @@ jobs:
           node-version: '20.x'
       - name: entrar no codigo fonte...
         run: cd project/app
+
       - name: instalar pacotes
         run: cd project/app && npm i 
+
       - name: fazer build
-        run: npm run export
+        run: cd project/app && npm run export
+
       - name: onde estou?
         run: pwd
+
       - name: ver o que tem aqui
-        run: ls -lia  
+        run: cd project/app && ls -lia  
+
       - name: subir nivel
-        run: cd ../
+        run: cd project
+
       - name: ver o que tem aqui
         run: ls -lia 
-      # - name: npm install and npm run build
-      #   run: |
-      #     cd project/app
-      #     npm i
-      #     npm run export
-      #     ls -lia
-      #     ls -lia build
+
       - uses: actions/upload-artifact@master
         with:
           name: dist-app
-          path: project/build
+          path: project/out
 
 
   deploy:
