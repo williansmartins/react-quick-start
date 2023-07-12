@@ -2,8 +2,6 @@ name: deploy PRD
 
 on:
   push:
-    paths:
-      - 'project/app/**'
     branches:
       - 'main'
 
