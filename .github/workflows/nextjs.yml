@@ -1,1 +1,76 @@
-test
+name: deploy PRD
+
+on:
+  push:
+    paths:
+      - 'project/app/**'
+    branches:
+      - 'main'
+
+jobs:
+  build:
+    name: 🎉 Build and Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      # - name: onde estou?
+      #   run: pwd
+      # - name: ver o que tem aqui
+      #   run: cd front && ls -lia 
+      # - name: Entrar na pasta do APP
+      #   run: cd front  
+      # - name: onde estou?
+      #   run: pwd
+      # - name: ver o que tem aqui
+      #   run: ls -lia   
+      - name: npm install and npm run build
+        run: |
+          cd project/app
+          npm i
+          npm run export
+          ls -lia
+          ls -lia build
+      - uses: actions/upload-artifact@master
+        with:
+          name: dist-app
+          path: project/build
+
+
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/download-artifact@v2.0.1
+        with:
+          name: dist-app
+          path: dist-app
+
+      # - name: testes temporarios
+      #   run: | 
+      #     mkdir dist-app/
+      #     echo "conteudo" > dist-app/teste.txt
+
+      - name: Ver detalhes
+        run: |
+          pwd 
+          ls -lia
+
+      - name: FTP-Deploy-Action
+        uses: SamKirkland/FTP-Deploy-Action@2.0.0
+        env:
+          FTP_SERVER: pwms.com.br
+          FTP_USERNAME: pwms
+          FTP_PASSWORD: Pwms123#1369
+
+          LOCAL_DIR: dist-app
+          REMOTE_DIR: ~/pwms.com.br/www/reactjs
+          METHOD: sftp
+          PORT: 22
+          ARGS: --verbose
