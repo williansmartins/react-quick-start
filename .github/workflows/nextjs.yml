@@ -16,27 +16,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '20.x'
-      # - name: onde estou?
-      #   run: pwd
-      # - name: ver o que tem aqui
-      #   run: cd front && ls -lia 
-      # - name: Entrar na pasta do APP
-      #   run: cd front  
-      # - name: onde estou?
-      #   run: pwd
-      # - name: ver o que tem aqui
-      #   run: ls -lia   
       - name: npm install and npm run build
         run: |
           cd project/app
           npm i
           npm run export
           ls -lia
-          ls -lia build
+          ls -lia out
       - uses: actions/upload-artifact@master
         with:
           name: dist-app
-          path: project/build
+          path: project/out
 
 
   deploy:
