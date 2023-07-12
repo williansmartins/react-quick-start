@@ -40,7 +40,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: dist-app
-          path: project/out
+          path: project/build
 
   deploy:
     name: 🚀 Deploy
