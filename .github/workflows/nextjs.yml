@@ -35,13 +35,12 @@ jobs:
         run: cd project
 
       - name: ver o que tem aqui
-        run: ls -lia 
+        run: cd project && ls -lia 
 
       - uses: actions/upload-artifact@master
         with:
           name: dist-app
           path: project/out
-
 
   deploy:
     name: 🚀 Deploy
