@@ -68,7 +68,7 @@ jobs:
         env:
           FTP_SERVER: apps.pwms.com.br
           FTP_USERNAME: app2
-          FTP_PASSWORD: App2123#
+          FTP_PASSWORD: 4j6YuE&AuWxO
 
           LOCAL_DIR: dist-app
           REMOTE_DIR: ~/apps.pwms.com.br/www/reactjs
