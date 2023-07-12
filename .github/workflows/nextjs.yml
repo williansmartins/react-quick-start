@@ -66,12 +66,12 @@ jobs:
       - name: FTP-Deploy-Action
         uses: SamKirkland/FTP-Deploy-Action@2.0.0
         env:
-          FTP_SERVER: pwms.com.br
-          FTP_USERNAME: pwms
-          FTP_PASSWORD: Pwms123#1369
+          FTP_SERVER: apps.pwms.com.br
+          FTP_USERNAME: app2
+          FTP_PASSWORD: App2123#
 
           LOCAL_DIR: dist-app
-          REMOTE_DIR: ~/pwms.com.br/www/reactjs
+          REMOTE_DIR: ~/apps.pwms.com.br/www/reactjs
           METHOD: sftp
           PORT: 22
           ARGS: --verbose
