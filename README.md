@@ -14,3 +14,9 @@
 ## Lessons learned
 - Never define a component inside another component!
 - Deployed folder is .next, we can change it in next config file
+- Managing state:
+1) Identify your component’s different visual states
+1) Determine what triggers those state changes
+1) Represent the state in memory using useState
+1) Remove any non-essential state variables
+1) Connect the event handlers to set the state
